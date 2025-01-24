@@ -1,6 +1,0 @@
-gui.entering_past=Going back in Time
-gui.exiting_past=Going forward in Time
-
-item.@.time_machine_handheld.name=Handheld Time Machine
-tile.@.time_machine.name=Time Machine
-tile.@.scaffolding.name=Scaffolding
