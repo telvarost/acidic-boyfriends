@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "dinology",
+  "id": "acidboy",
   "version": "${version}",
 
-  "name": "Dinology",
-  "description": "A time travel + dinosaur mod.",
+  "name": "Acidic Boyfriends",
+  "description": "A mod that adds boyfriend mobs.",
   "authors": [ "NatsuPotato" ],
 
   "license": "MIT",
-  "icon": "assets/dinology/icon.png",
+  "icon": "assets/acidboy/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.natsupotato.dinology.Dinology"
+      "net.natsupotato.acidboy.AcidicBoyfriends"
     ],
     "stationapi:event_bus_client": [],
     "stationapi:event_bus_server": []
   },
   "mixins": [
-    "dinology.mixins.json"
+    "acidboy.mixins.json"
   ],
 
   "depends": {
