@@ -1,8 +1,11 @@
+package net.natsupotato.dinology.gen;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.world.dimension.Dimension;
 import net.modificationstation.stationapi.api.client.world.dimension.TravelMessageProvider;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.natsupotato.dinology.Dinology;
 
 public class PastDimension extends Dimension implements TravelMessageProvider {
 
@@ -15,6 +18,16 @@ public class PastDimension extends Dimension implements TravelMessageProvider {
     public PastDimension(int serialId) {
         id = serialId;
     }
+
+    @Override
+    protected void initBiomeSource() {
+        this.biomeSource = new PastBiomeSource();
+    }
+
+//    @Override
+//    public ChunkSource createChunkGenerator() {
+//        return new ChunkProviderAether(world, world.getSeed());
+//    }
 
     @Environment(EnvType.CLIENT)
     @Override

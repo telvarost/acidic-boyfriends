@@ -1,3 +1,5 @@
+package net.natsupotato.dinology;
+
 import com.matthewperiut.retrocommands.dimension.BareTravelAgent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
