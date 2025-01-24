@@ -1,4 +1,4 @@
-package net.natsupotato.dinology.gen;
+package net.natsupotato.dinology.dimension;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

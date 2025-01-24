@@ -1,4 +1,4 @@
-package net.natsupotato.dinology.gen;
+package net.natsupotato.dinology.dimension;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -19,10 +19,12 @@ public class SequoiadendronFeature extends Feature {
         if (world.getBlockId(x, y - 1, z) != Block.GRASS_BLOCK.id)
             return false;
 
+        int height = random.nextInt(24, 48);
+
         for (int dx = -1; dx <= 1; dx++) {
             for (int dz = -1; dz <= 1; dz++) {
 
-                for (int dy = 0; dy <= 30; dy++) {
+                for (int dy = 0; dy <= height; dy++) {
 
                     world.setBlockWithoutNotifyingNeighbors(x + dx, y + dy, z + dz, Block.LOG.id, 1);
                 }

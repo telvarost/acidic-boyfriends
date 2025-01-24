@@ -1,7 +1,6 @@
 package net.natsupotato.dinology;
 
-import net.minecraft.world.gen.feature.BirchTreeFeature;
-import net.natsupotato.dinology.gen.PastDimension;
+import net.natsupotato.dinology.dimension.PastDimension;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.Item;
@@ -16,7 +15,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
 import net.modificationstation.stationapi.api.worldgen.biome.BiomeBuilder;
-import net.natsupotato.dinology.gen.SequoiadendronFeature;
+import net.natsupotato.dinology.dimension.SequoiadendronFeature;
 
 public class Dinology {
 

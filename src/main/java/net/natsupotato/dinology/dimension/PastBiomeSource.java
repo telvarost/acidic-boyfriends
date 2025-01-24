@@ -1,4 +1,4 @@
-package net.natsupotato.dinology.gen;
+package net.natsupotato.dinology.dimension;
 
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.biome.Biome;
@@ -21,14 +21,14 @@ public class PastBiomeSource extends BiomeSource {
 
     @Override
     public double getTemperature(int x, int z) {
-        return 1;
+        return 10.0;
     }
 
     @Override
     public double[] create(double[] temperatures, int x, int z, int xSize, int zSize) {
         if (temperatures == null || temperatures.length < xSize * zSize)
             temperatures = new double[xSize * zSize];
-        Arrays.fill(temperatures, 0, xSize * zSize, 1.0);
+        Arrays.fill(temperatures, 0, xSize * zSize, 10.0);
         return temperatures;
     }
 
