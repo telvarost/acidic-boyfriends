@@ -1,28 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "template",
+  "id": "dinology",
   "version": "${version}",
 
-  "name": "Template",
-  "description": "",
-  "authors": [
-    "DanyGames2014"
-  ],
+  "name": "Dinology",
+  "description": "A time travel + dinosaur mod.",
+  "authors": [ "NatsuPotato" ],
 
   "license": "MIT",
-  "icon": "assets/template/icon.png",
+  "icon": "assets/dinology/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
+      "net.natsupotato.dinology.Dinology"
     ],
-    "stationapi:event_bus_client": [
-    ],
-    "stationapi:event_bus_server": [
-    ]
+    "stationapi:event_bus_client": [],
+    "stationapi:event_bus_server": []
   },
   "mixins": [
-    "template.mixins.json"
+    "dinology.mixins.json"
   ],
 
   "depends": {
