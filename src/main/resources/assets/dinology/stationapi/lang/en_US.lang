@@ -1,0 +1,4 @@
+gui.entering_past=Going back in Time
+gui.exiting_past=Going forward in Time
+
+item.@.time_machine.name=Handheld Time Machine

@@ -6,6 +6,8 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 public class PastDimension extends Dimension implements TravelMessageProvider {
 
+    // https://github.com/matthewperiut/aether-fabric-b1.7.3/blob/master/src/main/java/com/matthewperiut/aether/gen/dim/AetherDimension.java
+
     public static final String
             ENTERING_MESSAGE = "gui." + Identifier.of(Dinology.NAMESPACE, "entering_past"),
             LEAVING_MESSAGE = "gui." + Identifier.of(Dinology.NAMESPACE, "exiting_past");
