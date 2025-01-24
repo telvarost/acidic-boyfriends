@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "dinology:block/time_machine" }
+  }
+}

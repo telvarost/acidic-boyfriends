@@ -1,9 +1,9 @@
 package net.natsupotato.dinology.dimension;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.PortalForcer;
+import net.natsupotato.dinology.Dinology;
 
 import java.util.Random;
 
@@ -24,12 +24,18 @@ public class PastTravelAgent extends PortalForcer {
 
     public boolean createPortal(World world, Entity entity) {
 
-        entity.y = world.getTopSolidBlockY((int) entity.x, (int) entity.z);
+        int x = (int) entity.x;
+        int y = world.getTopSolidBlockY((int) entity.x, (int) entity.z);
+        int z = (int) entity.z;
 
         if (isUsingMultiBlock) {
 
-            world.setBlockWithoutNotifyingNeighbors((int) entity.x - 1, (int) entity.y - 1, (int) entity.z - 1, Block.IRON_BLOCK.id);
+            world.setBlockWithoutNotifyingNeighbors(x, y, z, Dinology.TIME_MACHINE.id);
         }
+
+        entity.x = x;
+        entity.y = y + 1;
+        entity.z = z;
 
         return true;
     }

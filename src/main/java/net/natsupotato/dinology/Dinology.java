@@ -1,5 +1,9 @@
 package net.natsupotato.dinology;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
+import net.modificationstation.stationapi.api.template.block.TemplateTranslucentBlock;
 import net.natsupotato.dinology.dimension.PastDimension;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.entity.passive.ChickenEntity;
@@ -22,12 +26,11 @@ public class Dinology {
     @Entrypoint.Namespace
     public static final Namespace NAMESPACE = Null.get();
 
-    public static Identifier THE_PAST;
-
+    public static Identifier THE_PAST; // dimension
     public static Biome PAST_BIOME;
-
-    public static Item TIME_MACHINE_ITEM;
-    // TIME_MACHINE_BLOCK
+    public static Block SCAFFOLDING;
+    public static Block TIME_MACHINE;
+    public static Item TIME_MACHINE_HANDHELD;
 
     @EventListener
     private static void registerDimensions(DimensionRegistryEvent event) {
@@ -39,11 +42,21 @@ public class Dinology {
     }
 
     @EventListener
+    public void registerBlocks(BlockRegistryEvent event) {
+
+        SCAFFOLDING = new TemplateTranslucentBlock(NAMESPACE.id("scaffolding"), 0, Material.METAL, true)
+                .setTranslationKey(NAMESPACE, "scaffolding");
+
+        TIME_MACHINE = new TimeMachineBlock(NAMESPACE.id("time_machine"))
+                .setTranslationKey(NAMESPACE, "time_machine");
+    }
+
+    @EventListener
     public void registerItems(ItemRegistryEvent event) {
 
-        TIME_MACHINE_ITEM = new TimeMachineItem(NAMESPACE.id("time_machine"))
+        TIME_MACHINE_HANDHELD = new TimeMachineItem(NAMESPACE.id("time_machine_handheld"))
                 .setMaxCount(1)
-                .setTranslationKey(NAMESPACE, "time_machine");
+                .setTranslationKey(NAMESPACE, "time_machine_handheld");
     }
 
     @EventListener

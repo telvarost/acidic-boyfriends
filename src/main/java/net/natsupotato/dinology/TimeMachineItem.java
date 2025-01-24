@@ -14,6 +14,7 @@ public class TimeMachineItem extends TemplateItem {
         super(id);
     }
 
+    @Override
     public ItemStack use(ItemStack stack, World world, PlayerEntity user) {
 
         DimensionHelper.switchDimension(user, Dinology.THE_PAST, 1.0, new PastTravelAgent(false));
