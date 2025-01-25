@@ -4,6 +4,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.FoodItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 
@@ -41,7 +43,7 @@ public class BoyfriendEntity extends AnimalEntity {
 
             if (owner != null) {
 
-                this.setTarget(this.getDistance(owner) > 8 ? owner : null);
+                this.setTarget(this.getDistance(owner) > 7 ? owner : null);
 
             } else if (!this.isSubmergedInWater()) {
 
@@ -64,20 +66,24 @@ public class BoyfriendEntity extends AnimalEntity {
     @Override
     public boolean interact(PlayerEntity player) {
 
-        //ItemStack itemStack = player.inventory.getSelectedItem();
+        ItemStack itemStack = player.inventory.getSelectedItem();
 
         if (this.ownerName.isEmpty()) {
 
-            String var2 = "heart"; // "smoke"
-
-            for (int var3 = 0; var3 < 7; ++var3) {
-                double var4 = this.random.nextGaussian() * 0.02;
-                double var6 = this.random.nextGaussian() * 0.02;
-                double var8 = this.random.nextGaussian() * 0.02;
-                this.world.addParticle(var2, this.x + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width, this.y + 0.5 + (double) (this.random.nextFloat() * this.height), this.z + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width, var4, var6, var8);
-            }
+            // for now, boyfriends tame just by clicking them, very simple
+            emitParticles("heart");
 
             this.ownerName = player.name;
+
+            return true;
+
+        } else if (itemStack != null && itemStack.getItem() instanceof FoodItem food) {
+
+            this.heal(food.getHealthRestored());
+
+            emitParticles(this.health == this.maxHealth ? "heart" : "smoke");
+
+            player.inventory.removeStack(player.inventory.selectedSlot, 1);
 
             return true;
 
@@ -90,6 +96,22 @@ public class BoyfriendEntity extends AnimalEntity {
         }
 
         return false;
+    }
+
+    private void emitParticles(String particleType) {
+
+        for (int i = 0; i < 7; ++i) {
+
+            this.world.addParticle(
+                    particleType,
+                    this.x + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
+                    this.y + 0.5 + (double) (this.random.nextFloat() * this.height),
+                    this.z + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
+                    this.random.nextGaussian() * 0.02,
+                    this.random.nextGaussian() * 0.02,
+                    this.random.nextGaussian() * 0.02
+            );
+        }
     }
 
     @Override

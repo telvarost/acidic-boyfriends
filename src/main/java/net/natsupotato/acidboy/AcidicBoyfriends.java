@@ -2,7 +2,6 @@ package net.natsupotato.acidboy;
 
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
-import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -23,6 +22,6 @@ public class AcidicBoyfriends {
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
 
-        event.renderers.put(BoyfriendEntity.class, new LivingEntityRenderer(new BipedEntityModel(), 0.5f));
+        event.renderers.put(BoyfriendEntity.class, new LivingEntityRenderer(new BoyfriendEntityModel(), 0.5f));
     }
 }
