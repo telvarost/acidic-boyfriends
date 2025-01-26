@@ -1,4 +1,4 @@
-package net.natsupotato.acidboy;
+package net.natsupotato.acidboy.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
