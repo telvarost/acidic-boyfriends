@@ -25,9 +25,7 @@
       "net.natsupotato.acidboy.AcidicBoyfriends"
     ]
   },
-  "mixins": [
-    "acidboy.mixins.json"
-  ],
+  "mixins": [],
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"

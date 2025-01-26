@@ -3,6 +3,7 @@ package net.natsupotato.acidboy;
 import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 
 public class Config {
+
     public static class SpawnConfig {
         
         @ConfigEntry(name = "Spawning Enabled")

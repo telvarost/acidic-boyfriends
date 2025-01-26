@@ -21,18 +21,20 @@ public class AcidicBoyfriends {
     
     @EventListener
     public void registerEntities(EntityRegister event) {
+
         event.register(BoyfriendEntity.class, NAMESPACE.id("boyfriend").toString());
     }
 
     @EventListener
     public void registerMobHandlers(MobHandlerRegistryEvent event) {
+
         Registry.register(event.registry, NAMESPACE.id("boyfriend"), BoyfriendEntity::new);
     }
     
     @EventListener
     public void registerEntitySpawn(BiomeModificationEvent event) {
-        if(SPAWN_CONFIG.spawningEnabled){
+
+        if (SPAWN_CONFIG.spawningEnabled)
             event.biome.addPassiveEntity(BoyfriendEntity.class, SPAWN_CONFIG.spawnRarity);
-        }
     }
 }

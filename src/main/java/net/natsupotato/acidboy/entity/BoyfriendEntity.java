@@ -17,22 +17,32 @@ import net.natsupotato.acidboy.AcidicBoyfriends;
 @SuppressWarnings("UnnecessaryBoxing")
 @HasTrackingParameters(updatePeriod = 1, sendVelocity = TriState.TRUE, trackingDistance = 30)
 public class BoyfriendEntity extends AnimalEntity implements MobSpawnDataProvider {
+
     public BoyfriendEntity(World world) {
         super(world);
+
         this.maxHealth = 20;
-        this.health = 20;
+        this.health    = 20;
+
         this.setSkinID(this.random.nextInt(4));
     }
 
     @Override
     protected void tickLiving() {
         super.tickLiving();
+
         if (!world.isRemote) {
+
             if (!this.getOwnerName().isEmpty() && this.vehicle == null) {
+
                 PlayerEntity owner = this.world.getPlayer(this.getOwnerName());
+
                 if (owner != null) {
+
                     this.setTarget(this.getDistance(owner) > 7 ? owner : null);
+
                 } else if (!this.isSubmergedInWater()) {
+
                     setSitting(true);
                 }
             }
@@ -52,30 +62,40 @@ public class BoyfriendEntity extends AnimalEntity implements MobSpawnDataProvide
 
     @Override
     public String getTexture() {
+
         updateTexture();
+
         return texture;
     }
 
     public void updateTexture() {
+
         this.texture = "/assets/acidboy/stationapi/textures/entity/boyfriend" + getSkinID() + ".png";
     }
 
     @Override
     public boolean interact(PlayerEntity player) {
+
         if (!player.world.isRemote) {
+
             ItemStack itemStack = player.inventory.getSelectedItem();
 
             if (this.getOwnerName().isEmpty()) {
+
                 // for now, boyfriends tame just by clicking them, very simple
                 emitParticles("heart");
                 this.setOwnerName(player.name);
                 return true;
+
             } else if (itemStack != null && itemStack.getItem() instanceof FoodItem food) {
+
                 this.heal(food.getHealthRestored());
                 emitParticles(this.health == this.maxHealth ? "heart" : "smoke");
                 player.inventory.removeStack(player.inventory.selectedSlot, 1);
                 return true;
+
             } else if (this.getOwnerName().equals(player.name)) {
+
                 setSitting(!isSitting());
                 this.setPath(null);
                 return true;
@@ -86,15 +106,17 @@ public class BoyfriendEntity extends AnimalEntity implements MobSpawnDataProvide
     }
 
     private void emitParticles(String particleType) {
+
         for (int i = 0; i < 7; ++i) {
+
             this.world.addParticle(
-                    particleType,
-                    this.x + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
-                    this.y + 0.5 + (double) (this.random.nextFloat() * this.height),
-                    this.z + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
-                    this.random.nextGaussian() * 0.02,
-                    this.random.nextGaussian() * 0.02,
-                    this.random.nextGaussian() * 0.02
+                particleType,
+                this.x + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
+                this.y + 0.5 + (double) (this.random.nextFloat() * this.height),
+                this.z + (double) (this.random.nextFloat() * this.width * 2.0F) - (double) this.width,
+                this.random.nextGaussian() * 0.02,
+                this.random.nextGaussian() * 0.02,
+                this.random.nextGaussian() * 0.02
             );
         }
     }
@@ -108,8 +130,9 @@ public class BoyfriendEntity extends AnimalEntity implements MobSpawnDataProvide
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
+
         this.dataTracker.startTracking(16, Integer.valueOf(0)); // Sitting
-        this.dataTracker.startTracking(17, String.valueOf("")); // Owner Name
+        this.dataTracker.startTracking(17, ""); // Owner Name
         this.dataTracker.startTracking(18, Integer.valueOf(0)); // Skin ID
     }
 
@@ -134,6 +157,7 @@ public class BoyfriendEntity extends AnimalEntity implements MobSpawnDataProvide
     }
 
     public void setSkinID(int value) {
+
         this.dataTracker.set(18, value);
         updateTexture();
     }
