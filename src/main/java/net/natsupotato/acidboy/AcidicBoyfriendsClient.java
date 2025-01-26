@@ -6,6 +6,8 @@ import net.modificationstation.stationapi.api.client.event.render.entity.EntityR
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Namespace;
 import net.modificationstation.stationapi.api.util.Null;
+import net.natsupotato.acidboy.entity.BoyfriendEntity;
+import net.natsupotato.acidboy.entity.model.BoyfriendEntityModel;
 
 public class AcidicBoyfriendsClient {
 
@@ -14,7 +16,6 @@ public class AcidicBoyfriendsClient {
 
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
-
         event.renderers.put(BoyfriendEntity.class, new LivingEntityRenderer(new BoyfriendEntityModel(), 0.5f));
     }
 }

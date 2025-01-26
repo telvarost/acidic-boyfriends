@@ -18,7 +18,12 @@
     "stationapi:event_bus_client": [
       "net.natsupotato.acidboy.AcidicBoyfriendsClient"
     ],
-    "stationapi:event_bus_server": []
+    "stationapi:event_bus_server": [
+      
+    ],
+    "gcapi": [
+      "net.natsupotato.acidboy.AcidicBoyfriends"
+    ]
   },
   "mixins": [
     "acidboy.mixins.json"
