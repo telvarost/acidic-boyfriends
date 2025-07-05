@@ -14,7 +14,7 @@ import net.natsupotato.acidboy.entity.BoyfriendEntity;
 public class AcidicBoyfriends {
 
     @Entrypoint.Namespace
-    public static final Namespace NAMESPACE = Null.get();
+    public static Namespace NAMESPACE = Null.get();
 
     @ConfigRoot(value = "spawning", visibleName = "Spawning")
     public static final Config.SpawnConfig SPAWN_CONFIG = new Config.SpawnConfig();

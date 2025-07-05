@@ -12,7 +12,7 @@ import net.natsupotato.acidboy.entity.BoyfriendEntityModel;
 public class AcidicBoyfriendsClient {
 
     @Entrypoint.Namespace
-    public static final Namespace NAMESPACE = Null.get();
+    public static Namespace NAMESPACE = Null.get();
 
     @EventListener
     public void registerEntityRenderer(EntityRendererRegisterEvent event) {
